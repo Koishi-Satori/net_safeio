@@ -1,0 +1,1 @@
+ java -classpath ./net_safeio.jar top.kkoishi.safeio.MainKt
