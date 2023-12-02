@@ -20,6 +20,15 @@ Options:
 
 传输的数据必须为由table<string, string>序列化来的json, 同时返回的数据也为json格式
 
+返回的response直接使用response.body结合DecodeJSON反序列化Json即可拿到储存的table
+```squirrel
+// GetDataImpl is used for getting response.
+HttpRequestResponse response = GetDataImpl()
+table data = DecodeJSON(response.body)
+// Your process code
+// ..
+```
+
 运行要求: JDK 17以上
 
 ## JDK LINKS

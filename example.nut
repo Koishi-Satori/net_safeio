@@ -1,10 +1,13 @@
+// NorthStar's SQHttp API:
 // https://r2northstar.readthedocs.io/en/latest/reference/northstar/httprequests.html
+//
 // write: [api_url]/write data
 // read: [api_url]/read_data
-// NorthStar's Json API: EncodeJSON/DecodeJSON
 // URL example: localhost:1145/read_data
+//
+// NorthStar's Json API: EncodeJSON/DecodeJSON
 
-// POST
+// POST EXAMPLE
 table data = {}
 // TODO: put your data
 // you can serialize non-string type to string as key/value
@@ -16,7 +19,7 @@ if (NSHttpPostBody("[api_url]", json)) {
 
 //-------------------------------------------------------------
 
-// GET
+// GET EXAMPLE
 HttpRequest request
 request.method = HttpRequestMethod.GET
 request.url = "[api_url]"
