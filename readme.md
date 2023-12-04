@@ -3,6 +3,7 @@
 - 基于kotlin+netty的http服务器
 - 高稳定性低占用
 - 在JVM上运行, 平台无关
+- 目前功能: 合并/覆写/查询
 
 ---
 
@@ -14,6 +15,8 @@ Options:
   - e.g. -p 1145
 - -dir -d: set the data storage dir
   - e.g. -d "/usr/xxxx"
+- -file -f: set the store file name, file name check regex: [a-zA-Z_.]+
+  - e.g. -f "ifp_data.json"
 
 ----
 建议将API部署到本地 然后使用localhost:[port]作为api_url

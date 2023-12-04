@@ -43,4 +43,20 @@ object IOUtil {
 
         return path.readText(Charsets.UTF_8)
     }
+
+    @JvmStatic
+    fun writeData(data: MutableMap<String, String>) {
+        val path = Path.of("${Main.dir}/${Main.fileName}")
+        // create file if not exists
+        if (path.notExists()) {
+            with(path.parent) {
+                if (notExists())
+                    createDirectories()
+            }
+            path.createFile()
+            path.writeText("{}")
+        }
+        path.writeText(Main.GSON.toJson(data))
+        println("success to override data.")
+    }
 }

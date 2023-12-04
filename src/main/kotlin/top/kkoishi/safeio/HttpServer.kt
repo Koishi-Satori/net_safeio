@@ -8,9 +8,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.handler.codec.http.HttpObject
 import io.netty.handler.codec.http.HttpObjectAggregator
 import io.netty.handler.codec.http.HttpRequest
-import io.netty.handler.codec.http.HttpRequestDecoder
-import io.netty.handler.codec.http.HttpRequestEncoder
 import io.netty.handler.codec.http.HttpServerCodec
+import top.kkoishi.safeio.nio.OverrideHandler
 import top.kkoishi.safeio.nio.ReadHandler
 import top.kkoishi.safeio.nio.WriteHandler
 import java.util.concurrent.ThreadFactory
@@ -31,7 +30,7 @@ class HttpServer(private val port: Int) : Runnable {
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childHandler(object : ChannelInitializer<SocketChannel>() {
                     override fun initChannel(ch: SocketChannel) {
-                        val handlers = arrayOf(WriteHandler(), ReadHandler())
+                        val handlers = arrayOf(WriteHandler(), ReadHandler(), OverrideHandler())
                         ch.pipeline().addLast(HttpServerCodec())
                             .addLast("aggregator", HttpObjectAggregator(1048576))
                             .addLast(object : SimpleChannelInboundHandler<HttpObject>() {

@@ -26,6 +26,7 @@ object GNUTypeOptions {
                     if ((nDir.exists() && !nDir.isDirectory()) || nDir.notExists())
                         nDir.createDirectories()
                     Main.dir = nDir.absolutePathString()
+                    println("set new dir: $nDir")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Main.dir = "./"
@@ -43,6 +44,15 @@ object GNUTypeOptions {
                         println("invalid port number: $iPort")
                 } catch (nfe: NumberFormatException) {
                     nfe.printStackTrace()
+                }
+            }
+        },
+        Option(arrayOf("-file", "-f"), true) { _, name ->
+            if (name != null) {
+                println("try to set new file name: $name")
+                if (name.matches(Regex("[a-zA-Z_.]+"))) {
+                    println("set new file name: $name")
+                    Main.fileName = name
                 }
             }
         }
